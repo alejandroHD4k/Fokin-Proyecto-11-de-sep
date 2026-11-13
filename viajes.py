@@ -97,9 +97,3 @@ def calcular_precio_dinamico(precio_base, ocupacion):
         recargo = 1.80
     
     return round(precio_base * recargo, 2)  # Redondeamos a dos decimales
-
-
-base = calcular_precio_base(calcular_distancia("BOG", "BGA"))
-print(base)                                  # precio base
-print(calcular_precio_dinamico(base, 30))    # sin recargo
-print(calcular_precio_dinamico(base, 90)) 
