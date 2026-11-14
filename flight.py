@@ -1,5 +1,6 @@
 import random
-from data import AEROPUERTOS, AVIONES
+from data import AVIONES
+from viajes import calcular_distancia
 
 class Vuelo:
     def __init__(self, codigo, origen, destino, tipo_avion, asientos_vendidos):
@@ -42,6 +43,11 @@ class Vuelo:
     @property
     def asientos_disponibles(self):
         return self._asientos_disponibles
+
+    @property
+    def distancia(self):
+        """Distancia del vuelo en km, calculada con viajes.py."""
+        return calcular_distancia(self._origen, self._destino)
 
     # Reserva de asiento
     def reservar_asiento(self):
