@@ -73,3 +73,11 @@ def buscar_vuelos(programacion, origen=None, destino=None, dia=None):
                 continue
             resultados.append((d, vuelo))
     return resultados
+
+def obtener_vuelo(programacion, codigo):
+    """Retorna el vuelo con ese código, o None si no existe."""
+    for vuelos in programacion.values():
+        for vuelo in vuelos:
+            if vuelo.codigo == codigo:
+                return vuelo
+    return None
