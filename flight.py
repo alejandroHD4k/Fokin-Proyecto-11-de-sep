@@ -44,7 +44,7 @@ class Vuelo:
         return self._asientos_disponibles
 
     # Reserva de asiento
-    def reserveSeat(self):
+    def reservar_asiento(self):
         """
         Reserva un asiento en el vuelo.
 

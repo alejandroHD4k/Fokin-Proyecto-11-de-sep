@@ -53,25 +53,23 @@ def buscar_vuelos(programacion, origen=None, destino=None, dia=None):
     Retorna:
         list[tuple[str, Vuelo]]: lista de (dia, vuelo) que cumplen los filtros.
     """
+
+    #Crear una lista vacía para ir llenando con los vuelos que cumplan los filtros
     resultados = []
+
+    #Dos variables, que son el día y la lista de vuelos de ese día, que se van a ir recorriendo en el diccionario de programación
     for d, vuelos in programacion.items():
+        #Si se especifica un día, solo se buscan vuelos en ese día
         if dia is not None and d != dia:
             continue
+
+        #Iteramos sobre los vuelos del día, y si cumplen los filtros de origen y destino, se agregan a la lista de resultados
         for vuelo in vuelos:
+
+            #Filtramos por origen y destino, si se especifica alguno de ellos
             if origen is not None and vuelo.origen != origen:
                 continue
             if destino is not None and vuelo.destino != destino:
                 continue
             resultados.append((d, vuelo))
     return resultados
-
-if __name__ == "__main__":
-    semana = generar_programacion_semanal()
-    for dia, vuelos in semana.items():
-        print(f"\n=== {dia} ({len(vuelos)} vuelos) ===")
-        for v in vuelos:
-            print(v)
-
-    print("\n--- Vuelos que salen de BOG ---")
-    for dia, v in buscar_vuelos(semana, origen="BOG"):
-        print(dia, "|", v)
